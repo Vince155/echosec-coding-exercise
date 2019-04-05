@@ -6,6 +6,8 @@ Echosec Search is a search and alerting tool for location-based social media. We
 
 Beacon sheds light on the dark web by combining indexes of TOR sites, paste-bin dumps, public discord and telegram chat logs into an advanced search interface for cybersecurity professionals.
 
+We value a curious attitude towards discovering and delivering new open source data to our end customers. The purpose of the exercise is to create a common framework that utilizes many of the same patterns we use in our production applications to discuss during your technical interview. We encourage you to take this project in a direction that compels you. Expand and share your work on this however you like.
+
 ## Task
 
 Using the [API of Ice and Fire](https://anapioficeandfire.com/Documentation), create a Vue.js application that allows users to search for A Song of Ice and Fire characters and display them within the application.
