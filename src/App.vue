@@ -36,7 +36,8 @@ export default {
   },
   data: () => ({
     isLoading: false,
-    results: ["1", "2", "3"]
+    // An array of Song of Ice and Fire Characters to display
+    results: []
   }),
   methods: {
     /**
