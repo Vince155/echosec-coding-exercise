@@ -40,8 +40,8 @@ You can then run `npm run serve` to re-compile your changes in real time or `npm
 ## Steps
 
 - Pull down git repo: https://github.com/echosec/echosec-coding-exercise
-- Follow build steps on repo
-- Connect to API: https://anapioficeandfire.com/Documentation#characters
+- Install dependencies using `npm install`
+- Compile code using `npm run serve` or `npm run build`
 - Display results upon searching
 - Comment your code
 - Submit a pull request when done
