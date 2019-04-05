@@ -1,10 +1,25 @@
 <template>
   <v-app>
     <v-toolbar app>
-      <search-bar-input/>
+      <search-bar-input
+        v-on:search-submitted="isLoading = true"
+        v-on:search-responded="searchResponded"
+      />
     </v-toolbar>
     <v-content>
-      <results :results="results"/>
+      <v-layout justify-center>
+        <!-- Loading spinner -->
+        <v-progress-circular
+          v-if="isLoading"
+          indeterminate
+          class="mt-5"
+        ></v-progress-circular>
+        <!-- Search results -->
+        <results
+          v-else
+          :results="results"
+        />
+      </v-layout>
     </v-content>
   </v-app>
 </template>
@@ -20,7 +35,20 @@ export default {
     Results
   },
   data: () => ({
+    isLoading: false,
     results: ["1", "2", "3"]
-  })
+  }),
+  methods: {
+    /**
+     * When the API responds, display search results
+     * @param {object} response - API response
+     */
+    searchResponded(response) {
+      this.isLoading = false;
+
+      // EXERCISE - Implement logic to handle the API response.
+      console.log(response); // eslint-disable-line no-console
+    }
+  }
 };
 </script>

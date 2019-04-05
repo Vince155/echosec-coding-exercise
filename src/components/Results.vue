@@ -1,14 +1,18 @@
 <template>
-  <v-layout justify-center>
-    <v-flex xs12 sm6>
-      <v-card
-        v-for="(result, index) in results"
-        :key="index"
-        height="100"
-        class="ma-3 pa-3"
-      >{{ result }}</v-card>
-    </v-flex>
-  </v-layout>
+  <v-flex xs12 sm6>
+    <v-card
+      v-for="(result, index) in results"
+      :key="index"
+      class="search-result ma-3"
+    >
+      <!-- EXERCISE - Format search results -->
+      <v-list>
+        <v-list-tile>
+          {{ result }}
+        </v-list-tile>
+      </v-list>
+    </v-card>
+  </v-flex>
 </template>
 
 <script>
@@ -24,4 +28,7 @@ export default {
 </script>
 
 <style scoped>
+  .search-result {
+    min-height: 100px;
+  }
 </style>

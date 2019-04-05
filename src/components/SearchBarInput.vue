@@ -31,9 +31,9 @@ export default {
   methods: {
     /**
      * When the user submits their search request (hits enter) query the API endpoint
-     * and display the results.
      */
     submitSearch() {
+      this.$emit('search-submitted');
       axios
         .get(CHARACTERS_API_ENDPOINT, {
           params: {
@@ -41,8 +41,7 @@ export default {
           },
         })
         .then(response => {
-          // EXERCISE - Implement logic to handle the API response.
-          console.log(response); // eslint-disable-line no-console
+          this.$emit('search-responded', response);
         });
     }
   }
