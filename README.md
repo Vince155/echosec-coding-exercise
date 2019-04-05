@@ -33,3 +33,4 @@ Vuetify documentation: https://vuetifyjs.com/en/components/api-explorer
 - Connect to API: https://anapioficeandfire.com/Documentation#characters
 - Display results upon searching
 - Comment your code
+- Submit a pull request when done
