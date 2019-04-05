@@ -34,6 +34,7 @@ export default {
      */
     submitSearch() {
       this.$emit('search-submitted');
+
       axios
         .get(CHARACTERS_API_ENDPOINT, {
           params: {
@@ -41,7 +42,8 @@ export default {
           },
         })
         .then(response => {
-          this.$emit('search-responded', response);
+          // Exercise - Use the Vue.js bus (see eg: line 36 above) to emit a search-responded event with the results.
+          console.log(response); // eslint-disable-line no-console
         });
     }
   }
