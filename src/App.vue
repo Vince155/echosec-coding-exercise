@@ -1,10 +1,10 @@
 <template>
   <v-app>
     <v-toolbar app>
-      <SearchBarInput/>
+      <search-bar-input/>
     </v-toolbar>
     <v-content>
-      <Results
+      <results
         :results="results"
       />
     </v-content>
