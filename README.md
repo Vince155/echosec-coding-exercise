@@ -19,7 +19,7 @@ We recomend first implementing the search functionality in `SearchBarInput.vue` 
 - Typing a character name in the search bar should show all results for that character.
 - If the user hits enter with no character name, all results should be displayed from the API response.
 - Display the name, alias, gender, culture, date of birth, date of death (if present), and allegiances for each character returned.
-- How you style the application is entirely up to you. You may either use Veutify or custom CSS.
+- How you style the application is entirely up to you. You may either use Vuetify or custom CSS.
 
 ## Development Box
 
