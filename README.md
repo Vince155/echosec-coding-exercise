@@ -27,3 +27,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Resources
+[Vue.js](https://vuejs.org/v2/guide/)
+[Vuetify (Material Design Component Framework)](https://vuetifyjs.com/en/getting-started/quick-start)
