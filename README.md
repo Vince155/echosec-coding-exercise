@@ -12,7 +12,7 @@ We value a curious attitude towards discovering and delivering new open source d
 
 Using the [API of Ice and Fire](https://anapioficeandfire.com/Documentation), create a Vue.js application that allows users to search for A Song of Ice and Fire characters and display them within the application.
 
-There are a number of comments within the code base labeled `exercise` which are left up to the developer to implmeent.
+There are a number of comments within the code base labeled `EXERCISE` which are left up to the developer to implmeent.
 
 We recomend first implementing the search functionality in `SearchBarInput.vue` and then working your way through `App.vue` and `Results.vue`.
 
