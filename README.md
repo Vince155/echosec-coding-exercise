@@ -33,7 +33,7 @@ You can then run `npm run serve` to re-compile your changes in real time or `npm
 
 - API of Ice and Fire: https://anapioficeandfire.com/Documentation#characters
 - Axios documentation: https://github.com/axios/axios
-Vuetify documentation: https://vuetifyjs.com/en/components/api-explorer
+- Vuetify documentation: https://vuetifyjs.com/en/components/api-explorer
 - Vue.js documentation: https://vuejs.org/v2/guide/
 
 
