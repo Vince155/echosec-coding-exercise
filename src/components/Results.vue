@@ -6,9 +6,16 @@
       class="search-result ma-3"
     >
       <!-- EXERCISE - Format search results -->
-      <v-list>
+      <v-list six-line subheader>
         <v-list-tile>
-          {{ result }}
+          <v-list-tile-content>
+            <v-list-tile-sub-title v-text="result.name"></v-list-tile-sub-title>
+            <v-list-tile-sub-title v-text="result.aliases"></v-list-tile-sub-title>
+            <v-list-tile-sub-title v-text="result.allegiances"></v-list-tile-sub-title>
+            <v-list-tile-sub-title v-text="result.born"></v-list-tile-sub-title>
+            <v-list-tile-sub-title v-text="result.died"></v-list-tile-sub-title>
+            <v-list-tile-sub-title v-text="result.culture"></v-list-tile-sub-title>
+          </v-list-tile-content>
         </v-list-tile>
       </v-list>
     </v-card>

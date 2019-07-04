@@ -39,11 +39,19 @@ export default {
         .get(CHARACTERS_API_ENDPOINT, {
           params: {
             // EXERCISE - Implement query GET parameters to search by name. Watch for case sensitivity.
+            name: this.searchInput,
+            aliases: this.searchInput
           },
         })
         .then(response => {
           // EXERCISE - Use the Vue.js bus (see eg: line 36 above) to emit a search-responded event with the results.
-          console.log(response); // eslint-disable-line no-console
+          
+          this.$emit('search-responded', response.data);
+          /**
+           * this.emit triggers a function to be called on App.vue with the API response as a parameter to use
+           * on searchResponded
+           */
+          
         });
     }
   }

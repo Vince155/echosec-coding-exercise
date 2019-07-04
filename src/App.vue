@@ -48,7 +48,11 @@ export default {
       this.isLoading = false;
 
       // EXERCISE - Implement logic to handle the API response.
+      console.log("App vue"); // eslint-disable-line no-console
+      // line below sets the results array to the API response
+      this.results = response;
       console.log(response); // eslint-disable-line no-console
+      console.log(response.aliases); // eslint-disable-line no-console
     }
   }
 };
