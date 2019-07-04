@@ -52,7 +52,6 @@ export default {
       // line below sets the results array to the API response
       this.results = response;
       console.log(response); // eslint-disable-line no-console
-      console.log(response.aliases); // eslint-disable-line no-console
     }
   }
 };

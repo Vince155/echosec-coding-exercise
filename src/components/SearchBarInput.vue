@@ -22,6 +22,8 @@ import axios from "axios";
  * @link https://anapioficeandfire.com/Documentation#characters
  */
 const CHARACTERS_API_ENDPOINT = "https://www.anapioficeandfire.com/api/characters";
+const HOUSES_API_ENDPOINT = "https://www.anapioficeandfire.com/api/houses";
+const BOOKS_API_ENDPOINT = "https://www.anapioficeandfire.com/api/books";
 
 export default {
   name: "SearchBarInput",
@@ -45,13 +47,11 @@ export default {
         })
         .then(response => {
           // EXERCISE - Use the Vue.js bus (see eg: line 36 above) to emit a search-responded event with the results.
-          
-          this.$emit('search-responded', response.data);
           /**
            * this.emit triggers a function to be called on App.vue with the API response as a parameter to use
            * on searchResponded
            */
-          
+          this.$emit('search-responded', response.data);
         });
     }
   }
