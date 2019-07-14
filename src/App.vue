@@ -37,8 +37,7 @@ export default {
   data: () => ({
     isLoading: false,
     // An array of Song of Ice and Fire Characters to display
-    results: [],
-    allegiances: []
+    results: []
   }),
   methods: {
     /**
@@ -47,8 +46,8 @@ export default {
      */
     searchResponded(response) {
       this.isLoading = false;
-
       // EXERCISE - Implement logic to handle the API response.
+
       // line below sets the results array to the API response
       this.results = response;
     }

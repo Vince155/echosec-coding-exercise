@@ -45,7 +45,6 @@ export default {
           params: {
             // EXERCISE - Implement query GET parameters to search by name. Watch for case sensitivity.
             name: this.searchInput,
-            aliases: this.searchInput,
             gender: this.searchInput,
             culture: this.searchInput
           },
