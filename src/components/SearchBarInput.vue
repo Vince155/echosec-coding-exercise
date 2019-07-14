@@ -56,8 +56,6 @@ export default {
            * on searchResponded
            */
           this.results = response.data;
-          
-          console.log('main search', this.results); // eslint-disable-line no-console
 
           for(var i = 0; i < this.results.length; i++) {
             // characters with allegiances can be taken down in a different list so
@@ -79,7 +77,6 @@ export default {
               culture: this.results[i].culture,
               gender: this.results[i].gender
             };
-            console.log('charName', this.characterName[i]); // eslint-disable-line no-console
           }
           return this.characterName;
         });
@@ -87,7 +84,6 @@ export default {
           await axios
             .get(this.characterName[i].allegiance[0])
             .then(response => {
-              console.log(response.data); // eslint-disable-line no-console
               this.characterName[i].allegiance = response.data.name;
             })
             .catch(error => {
@@ -95,8 +91,6 @@ export default {
               this.characterName[i].allegiance = "";
             });
         }
-
-      console.log('charNameOut', this.characterName); // eslint-disable-line no-console
           
       this.$emit('search-responded', this.characterName);
     }
