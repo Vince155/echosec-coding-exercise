@@ -10,10 +10,15 @@
         <v-list-tile>
           <v-list-tile-content>
             <v-list-tile-sub-title v-text="result.name"></v-list-tile-sub-title>
-            <v-list-tile-sub-title v-text="result.aliases"></v-list-tile-sub-title>
-            <v-list-tile-sub-title v-text="result.allegiances"></v-list-tile-sub-title>
+            <v-list-tile-sub-title v-text="result.alias"></v-list-tile-sub-title>
+          </v-list-tile-content>
+          <v-list-tile-content>
+            <v-list-tile-sub-title v-text="result.allegiance"></v-list-tile-sub-title>
+          </v-list-tile-content>
+          <v-list-tile-content>
             <v-list-tile-sub-title v-text="result.born"></v-list-tile-sub-title>
             <v-list-tile-sub-title v-text="result.died"></v-list-tile-sub-title>
+            <v-list-tile-sub-title v-text="result.gender"></v-list-tile-sub-title>
             <v-list-tile-sub-title v-text="result.culture"></v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
