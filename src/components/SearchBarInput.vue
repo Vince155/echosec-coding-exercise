@@ -22,8 +22,6 @@ import axios from "axios";
  * @link https://anapioficeandfire.com/Documentation#characters
  */
 const CHARACTERS_API_ENDPOINT = "https://www.anapioficeandfire.com/api/characters";
-//const HOUSES_API_ENDPOINT = "https://www.anapioficeandfire.com/api/houses";
-//const BOOKS_API_ENDPOINT = "https://www.anapioficeandfire.com/api/books";
 
 export default {
   name: "SearchBarInput",
@@ -51,23 +49,34 @@ export default {
         })
         .then(response => {
           // EXERCISE - Use the Vue.js bus (see eg: line 36 above) to emit a search-responded event with the results.
-          /**
-           * this.emit triggers a function to be called on App.vue with the API response as a parameter to use
-           * on searchResponded
-           */
+          
+          // The response is stored in the this.results list
           this.results = response.data;
 
           for(var i = 0; i < this.results.length; i++) {
-            // characters with allegiances can be taken down in a different list so
-            // that they can match with allegiance list
-            
-            if(this.results[i].aliases.length === 0) var alias = "";
-            else alias = this.results[i].aliases[0];
+            // The alias of a character is taken down depending on whether or not the character has one
+            var alias = this.results[i].aliases[0];
+
+            /** 
+             * Not every character has a name so the variable name will either the be an empty string 
+             * or the name of result's index
+             */
             if(this.results[i].name === "") var name = "";
             else name = this.results[i].name;
+
+            /** 
+             * Similar case here, if the allegiances' list length is 0 
+             * then the empty string will be taken down, otherwise the allengiance list for that
+             * character will be taken
+             */
             if(this.results[i].allegiances.length === 0) this.allegiances[i] = "";
             else this.allegiances[i] = this.results[i].allegiances;
 
+            /**
+             * Each individual result is stored in a record with different items for ease of access
+             * Currently the allegiance item returns a list with an API
+             * A GET request for that API will return the name of the house that the character belongs to
+             */
             this.characterName[i] = {
               alias: alias,
               name: name,
@@ -80,6 +89,11 @@ export default {
           }
           return this.characterName;
         });
+        /**
+         * For each character in the list of results, 
+         * a GET request is called for the API that is stored in allegiance list
+         * the allegiance item in the record is modified with the response as shown below
+         */
         for(var i = 0; i < this.characterName.length; i++) {
           await axios
             .get(this.characterName[i].allegiance[0])
@@ -91,7 +105,8 @@ export default {
               this.characterName[i].allegiance = "";
             });
         }
-          
+      
+      // In App.vue, the $emit call starts the searchResponded function with the list of characters as the parameter
       this.$emit('search-responded', this.characterName);
     }
   }
