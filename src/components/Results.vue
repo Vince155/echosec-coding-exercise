@@ -6,11 +6,11 @@
       class="search-result ma-3"
     >
       <!-- EXERCISE - Format search results -->
-      <v-list six-line subheader>
+      <v-list three-line>
         <v-list-tile>
           <v-list-tile-content>
+            <v-list-tile-title v-text="result.alias"></v-list-tile-title>
             <v-list-tile-sub-title v-text="result.name"></v-list-tile-sub-title>
-            <v-list-tile-sub-title v-text="result.alias"></v-list-tile-sub-title>
             <v-list-tile-sub-title v-text="result.allegiance"></v-list-tile-sub-title>
             <v-list-tile-sub-title v-text="result.born"></v-list-tile-sub-title>
             <v-list-tile-sub-title v-text="result.died"></v-list-tile-sub-title>
