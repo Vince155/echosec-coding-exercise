@@ -37,6 +37,8 @@ export default {
      */
     async submitSearch() {
       this.$emit('search-submitted');
+      this.characterName = [];
+      this.allegiances = [];
 
       await axios
         .get(CHARACTERS_API_ENDPOINT, {
