@@ -42,9 +42,7 @@ export default {
         .get(CHARACTERS_API_ENDPOINT, {
           params: {
             // EXERCISE - Implement query GET parameters to search by name. Watch for case sensitivity.
-            name: this.searchInput,
-            gender: this.searchInput,
-            culture: this.searchInput
+            name: this.searchInput
           },
         })
         .then(response => {
