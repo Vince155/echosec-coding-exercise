@@ -29,6 +29,7 @@ export default {
     searchInput: "",
     characterName: [],
     allegiances: [],
+    aliasFirst: "",
     results: []
   }),
   methods: {
@@ -44,7 +45,7 @@ export default {
         .get(CHARACTERS_API_ENDPOINT, {
           params: {
             // EXERCISE - Implement query GET parameters to search by name. Watch for case sensitivity.
-            name: this.searchInput
+            aliases: this.searchInput
           },
         })
         .then(response => {
@@ -52,43 +53,64 @@ export default {
           
           // The response is stored in the this.results list
           this.results = response.data;
-
-          for(var i = 0; i < this.results.length; i++) {
-            // The alias of a character is taken down depending on whether or not the character has one
-            var alias = this.results[i].aliases[0];
-
-            /** 
-             * Not every character has a name so the variable name will either the be an empty string 
-             * or the name of result's index
-             */
-            if(this.results[i].name === "") var name = "";
-            else name = this.results[i].name;
-
-            /** 
-             * Similar case here, if the allegiances' list length is 0 
-             * then the empty string will be taken down, otherwise the allengiance list for that
-             * character will be taken
-             */
-            if(this.results[i].allegiances.length === 0) this.allegiances[i] = "";
-            else this.allegiances[i] = this.results[i].allegiances;
-
-            /**
-             * Each individual result is stored in a record with different items for ease of access
-             * Currently the allegiance item returns a list with an API
-             * A GET request for that API will return the name of the house that the character belongs to
-             */
-            this.characterName[i] = {
-              alias: alias,
-              name: name,
-              allegiance: this.allegiances[i],
-              born: this.results[i].born,
-              died: this.results[i].died,
-              culture: this.results[i].culture,
-              gender: this.results[i].gender
-            };
+          this.searchInput = this.searchInput.toLowerCase().split(' ');
+          for(var h = 0; h < this.searchInput.length; h++) {
+            this.searchInput[h] = this.searchInput[h].charAt(0).toUpperCase() + this.searchInput[h].substring(1);
           }
-          return this.characterName;
+          this.searchInput = this.searchInput.join(' ');
+          if(this.searchInput === "The Daughter Of The Dusk") this.searchInput = "The Daughter of the Dusk";
+          if(this.searchInput === "The Sailor's Wife") this.searchInput = "the Sailor's Wife";
+          console.log('search input', this.searchInput);
+          return this.results;
         });
+
+      if(this.searchInput !== "") {
+        for(var x = 0; x < this.results.length; x++) {
+          console.log('result index', this.results[x].aliases[0]);
+          if(this.searchInput === this.results[x].aliases[0]) {
+            this.results = this.results[x];
+            console.log('alias search', this.results);
+          }
+          else continue;
+        }
+      }
+
+      for(i = 0; i < this.results.length; i++) {
+        console.log('new results', this.results);
+        // The alias of a character is taken down depending on whether or not the character has one
+        var alias = this.results[i].aliases[0];
+
+        /** 
+         * Not every character has a name so the variable name will either the be an empty string 
+         * or the name of result's index
+         */
+        if(this.results[i].name === "") var name = "";
+        else name = this.results[i].name;
+
+        /** 
+         * Similar case here, if the allegiances' list length is 0 
+         * then the empty string will be taken down, otherwise the allengiance list for that
+         * character will be taken
+         */
+        if(this.results[i].allegiances.length === 0) this.allegiances[i] = "";
+        else this.allegiances[i] = this.results[i].allegiances;
+
+        /**
+         * Each individual result is stored in a record with different items for ease of access
+         * Currently the allegiance item returns a list with an API
+         * A GET request for that API will return the name of the house that the character belongs to
+         */
+        this.characterName[i] = {
+          alias: alias,
+          name: name,
+          allegiance: this.allegiances[i],
+          born: this.results[i].born,
+          died: this.results[i].died,
+          culture: this.results[i].culture,
+          gender: this.results[i].gender
+        };
+      }
+
         /**
          * For each character in the list of results, 
          * a GET request is called for the API that is stored in allegiance list
