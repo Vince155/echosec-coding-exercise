@@ -59,7 +59,9 @@ export default {
           }
           this.searchInput = this.searchInput.join(' ');
           if(this.searchInput === "The Daughter Of The Dusk") this.searchInput = "The Daughter of the Dusk";
-          if(this.searchInput === "The Sailor's Wife") this.searchInput = "the Sailor's Wife";
+          if(this.searchInput === "The Sailor's Wife" || this.searchInput === "The Sailors Wife") {
+            this.searchInput = "the Sailor's Wife";
+          }
           console.log('search input', this.searchInput);
           return this.results;
         });
@@ -69,22 +71,41 @@ export default {
           console.log('result index', this.results[x].aliases[0]);
           if(this.searchInput === this.results[x].aliases[0]) {
             this.results = this.results[x];
-            console.log('alias search', this.results);
           }
           else continue;
         }
+        var alias = this.results.aliases[0];
+
+        if(this.results.name === "") var name = "";
+        else name = this.results.name;
+
+        if(this.results.allegiances.length === 0) this.allegiances[0] = "";
+        else this.allegiances[0] = this.results.allegiances;
+
+        this.characterName[0] = {
+          alias: alias,
+          name: name,
+          allegiance: this.allegiances[0],
+          born: this.results.born,
+          died: this.results.died,
+          culture: this.results.culture,
+          gender: this.results.gender
+        };
       }
+
+      console.log('alias search', this.results);
+      console.log('alias search length', this.results.length);
 
       for(i = 0; i < this.results.length; i++) {
         console.log('new results', this.results);
         // The alias of a character is taken down depending on whether or not the character has one
-        var alias = this.results[i].aliases[0];
+        alias = this.results[i].aliases[0];
 
         /** 
          * Not every character has a name so the variable name will either the be an empty string 
          * or the name of result's index
          */
-        if(this.results[i].name === "") var name = "";
+        if(this.results[i].name === "") name = "";
         else name = this.results[i].name;
 
         /** 
