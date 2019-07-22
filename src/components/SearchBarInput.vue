@@ -29,7 +29,6 @@ export default {
     searchInput: "",
     characterName: [],
     allegiances: [],
-    aliasFirst: "",
     results: []
   }),
   methods: {
@@ -51,7 +50,6 @@ export default {
         .then(response => {
           // EXERCISE - Use the Vue.js bus (see eg: line 36 above) to emit a search-responded event with the results.
           
-          // 
           /**
            * The response is stored in the this.results list
            * if there is input in the search bar then the result containing that specific alias
@@ -71,6 +69,12 @@ export default {
           return this.results;
         });
 
+      /**
+       * If the user inputs text into the search bar
+       * then the program will look through the list of results and find the match between the input 
+       * and the corresponding alias among the results
+       * the result for the matching alias is the one that we're going to be working with
+       */
       if(this.searchInput !== "") {
         for(var x = 0; x < this.results.length; x++) {
           if(this.searchInput === this.results[x].aliases[0]) {
@@ -78,6 +82,10 @@ export default {
           }
           else continue;
         }
+        /**
+         * Block of code below sets results to variable
+         * then stores them in a record
+         */
         if(this.results.length === undefined) {
           var alias = this.results.aliases[0];
 
@@ -99,6 +107,10 @@ export default {
         }
       }
 
+      /**
+       * Block below is for when no input was had for the search bar or there wasn't a valid alias searched
+       * All results will be stored in their own individual records for ease of access
+       */
       for(i = 0; i < this.results.length; i++) {
         
         // The alias of a character is taken down depending on whether or not the character has one
