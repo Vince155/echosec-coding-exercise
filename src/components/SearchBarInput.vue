@@ -164,7 +164,10 @@ export default {
             });
         }
       
-      // In App.vue, the $emit call starts the searchResponded function with the list of characters as the parameter
+      /**
+       * In App.vue, 
+       * the $emit call starts the searchResponded function with the list of characters as the parameter
+       */
       this.$emit('search-responded', this.characterName);
     }
   }
